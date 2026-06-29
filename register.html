@@ -1,58 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Registration</title>
-
 <style>
 body{
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:#f4f8ff;
 margin:0;
 }
-
-h1{
-background:#0d47a1;
-color:white;
-padding:20px;
-text-align:center;
-margin:0;
-}
-
-form{
+.container{
 max-width:400px;
 margin:30px auto;
 background:white;
 padding:20px;
 border-radius:10px;
-box-shadow:0 0 10px #ccc;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
-
+h2{
+text-align:center;
+color:#0047a1;
+}
 input,select{
 width:100%;
-padding:12px;
+padding:10px;
 margin:10px 0;
 }
-
 button{
 width:100%;
-padding:15px;
-background:#0d47a1;
+padding:12px;
+background:#0047a1;
 color:white;
 border:none;
 font-size:18px;
-border-radius:8px;
+border-radius:5px;
 }
 </style>
-
 </head>
 
 <body>
 
-<h1>Student Registration</h1>
+<div class="container">
 
-<form>
+<h2>Student Registration</h2>
 
 <input type="text" placeholder="Full Name">
 
@@ -60,4 +49,21 @@ border-radius:8px;
 
 <input type="tel" placeholder="Mobile Number">
 
-<select
+<select>
+<option>Select Exam</option>
+<option>NEET</option>
+<option>JEE</option>
+<option>MHT-CET</option>
+<option>SSC</option>
+<option>Banking</option>
+<option>Railway</option>
+</select>
+
+<input type="password" placeholder="Create Password">
+
+<button>Register</button>
+
+</div>
+
+</body>
+</html>
