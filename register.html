@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Registration</title>
+
 <style>
 body{
 font-family:Arial,sans-serif;
 background:#f4f8ff;
 margin:0;
+padding:20px;
 }
+
 .container{
 max-width:400px;
-margin:30px auto;
-background:white;
+margin:auto;
+background:#fff;
 padding:20px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
+
 h2{
 text-align:center;
 color:#0047a1;
 }
+
 input,select{
 width:100%;
-padding:10px;
+padding:12px;
 margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+box-sizing:border-box;
 }
+
 button{
 width:100%;
-padding:12px;
+padding:14px;
 background:#0047a1;
 color:white;
 border:none;
+border-radius:6px;
 font-size:18px;
-border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#00357c;
+}
+
+#msg{
+margin-top:15px;
+text-align:center;
+font-weight:bold;
 }
 </style>
+
 </head>
 
 <body>
@@ -43,14 +67,14 @@ border-radius:5px;
 
 <h2>Student Registration</h2>
 
-<input type="text" placeholder="Full Name">
+<input type="text" id="name" placeholder="Full Name">
 
-<input type="email" placeholder="Email">
+<input type="email" id="email" placeholder="Email">
 
-<input type="tel" placeholder="Mobile Number">
+<input type="tel" id="mobile" placeholder="Mobile Number">
 
-<select>
-<option>Select Exam</option>
+<select id="exam">
+<option value="">Select Exam</option>
 <option>NEET</option>
 <option>JEE</option>
 <option>MHT-CET</option>
@@ -59,11 +83,65 @@ border-radius:5px;
 <option>Railway</option>
 </select>
 
-<input type="password" placeholder="Create Password">
+<input type="password" id="password" placeholder="Create Password">
 
-<button>Register</button>
+<button id="registerBtn">Register</button>
+
+<p id="msg"></p>
 
 </div>
+<script type="module">
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAyQgjihn_WZK45N12MokIFhXND9qAsvcc",
+  authDomain: "cbt-mock-test-a1c0b.firebaseapp.com",
+  projectId: "cbt-mock-test-a1c0b",
+  storageBucket: "cbt-mock-test-a1c0b.firebasestorage.app",
+  messagingSenderId: "49691560256",
+  appId: "1:49691560256:web:9e4fd5737a432f9a1012a5",
+  measurementId: "G-QDMSCPFGE7"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.getElementById("registerBtn").addEventListener("click", async () => {
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const mobile = document.getElementById("mobile").value;
+const exam = document.getElementById("exam").value;
+const password = document.getElementById("password").value;
+
+if(!name || !email || !mobile || !exam || !password){
+document.getElementById("msg").innerHTML="Please fill all fields";
+return;
+}
+
+try{
+
+await addDoc(collection(db,"students"),{
+name,
+email,
+mobile,
+exam,
+password,
+createdAt:new Date()
+});
+
+document.getElementById("msg").innerHTML="Registration Successful ✅";
+
+}catch(error){
+
+document.getElementById("msg").innerHTML=error.message;
+
+}
+
+});
+
+</script>
 </body>
 </html>
