@@ -1,1 +1,89 @@
-<h1>Login Page</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+margin:0;
+padding:0;
+}
+
+.container{
+max-width:400px;
+margin:60px auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+h2{
+text-align:center;
+color:#004aad;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#004aad;
+color:white;
+border:none;
+border-radius:6px;
+font-size:18px;
+}
+
+button:hover{
+background:#003080;
+}
+
+#msg{
+text-align:center;
+margin-top:15px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Login</h2>
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+function login(){
+
+document.getElementById("msg").innerHTML="Login feature coming in next step.";
+
+}
+
+</script>
+
+</body>
+</html>
