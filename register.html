@@ -120,7 +120,7 @@ if(!name || !email || !mobile || !exam || !password){
 document.getElementById("msg").innerHTML="Please fill all fields";
 return;
 }
-
+await createUserWithEmailAndPassword(auth, email, password);
 try{
 
 await addDoc(collection(db,"students"),{
