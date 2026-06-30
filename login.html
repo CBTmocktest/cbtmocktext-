@@ -79,12 +79,32 @@ font-weight:bold;
 <script> type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-function login(){
+const firebaseConfig = {
+  apiKey: "AIzaSyAyQgjihn_WZK45N12MokIFhXND9qAsvcc",
+  authDomain: "cbt-mock-test-a1c0b.firebaseapp.com",
+  projectId: "cbt-mock-test-a1c0b",
+  storageBucket: "cbt-mock-test-a1c0b.firebasestorage.app",
+  messagingSenderId: "49691560256",
+  appId: "1:49691560256:web:9e4fd5737a432f9a1012a5",
+  measurementId: "G-QDMSCPFGE7"
+};
 
-document.getElementById("msg").innerHTML="Login feature coming in next step.";
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.login = async function () {
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    document.getElementById("msg").innerHTML = "Login Successful ✅";
+  } catch (error) {
+    document.getElementById("msg").innerHTML = error.message;
+  }
 
 }
-
 </script>
 
 </body>
